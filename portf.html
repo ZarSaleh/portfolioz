@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio de Zara</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="favicon.png" rel="icon" type="image/png">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    #vanta-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items:center;
+      z-index: 10;
+    }
+
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 1rem;
+      font-weight: 500;
+    }
+
+    .hero {
+      padding: 120px 20px 80px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p span {
+      font-weight: bold;
+      color: #c976f5;
+    }
+
+    .section {
+      padding: 80px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(6px);
+    }
+
+    .section h2 {
+      color: #c976f5;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .project {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 0.75rem;
+    }
+
+ .about-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.about-text {
+  text-align: center;
+}
+
+.tools {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+  align-items: center;
+}
+
+.tool {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.tool img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 2px #fff);
+}
+
+.tool span {
+  font-size: 0.85rem;
+  color: #fff;
+}
+
+.tool:hover {
+  transform: scale(1.1);
+}
+
+#projects {
+  padding: 80px 20px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(6px);
+}
+
+#projects h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 4rem;
+  color: #fff;
+}
+
+.project {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 4rem;
+  gap: 2rem;
+}
+
+.project.reverse {
+  flex-direction: row-reverse;
+}
+
+.project img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.project-text {
+  flex: 1;
+  color: #fff;
+}
+
+.project-text h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.project-text p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 25px;
+  background-color: #c976f5;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #764690;;
+}
+.experiences {
+  padding: 80px 20px;
+  background-color: rgba(255, 255, 255, 0.02);
+  text-align: center;
+}
+
+.experiences h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #fff;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.experience-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #c976f5;
+  border-radius: 16px;
+  padding: 20px;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(255, 144, 194, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(255, 144, 194, 0.3);
+}
+
+.experience-card h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  color: #deb4f5;
+}
+/* Base élégante */
+
+
+.sub-title {
+  text-align: center;
+  color: #e7e5e5;
+  font-size: 1rem;
+  margin-bottom: 40px;
+}
+
+/* Hobbies et Langues */
+.cards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  background: rgba(255,255,255,0.15);
+  border-radius: 16px;
+  border: 2px solid #deb4f5;
+  padding: 30px;
+  width: 220px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #fff;
+  backdrop-filter: blur(4px);
+}
+
+.card:hover {
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 8px 25px rgba(255,144,194,0.15);
+}
+
+.card i {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #c976f5;
+}
+
+/* Contact */
+.contact-form {
+  display: grid;
+  gap: 20px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #d499f4;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #d499f4;
+  opacity: 1;
+}
+
+.contact-form button {
+  background-color: #c976f5;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.contact-form button:hover {
+  background-color: #c976f5;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- VANTA Background -->
+  <div id="vanta-bg"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div>
+      <a href="#about">À propos</a>
+      <a href="#Education">Formations</a>
+      <a href="#projects">Projets</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <h1>Bienvenue sur mon portfolio</h1>
+    <p>Moi c'est <span>Zara</span>, passionnée par <span id="typing"></span></p>
+  </section>
+
+  <!-- About -->
+
+    
+ <section class="section" id="about" style="padding-top: 100px;">
+  <h2>À propos</h2>
+  <div class="about-container">
+    <div class="about-text">
+      <p>Je suis Zara, développeuse Front-End et UX/UI Designer.<br>J’ai commencé mon aventure dans le développement web en autodidacte, et depuis, je n’ai cessé d’apprendre et de me perfectionner. J’aime relever des défis techniques et collaborer avec d’autres passionnés . <br>En plus du développement. J’aime rendre les Plateforme non seulement fonctionnelles mais aussi agréables à utiliser. </p>
+      <p>Mes outils préférés :</p>
+      <div class="tools">
+        <div class="tool"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"><span>HTML5</span></div>
+        <div class="tool"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS"><span>JavaScript</span></div>
+        <div class="tool"><img src="Tailwindcss.png"><span>Tailwind</span></div>
+        <div class="tool"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"><span>GitHub</span></div>
+        <div class="tool"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code"><span>VS Code</span></div>
+        <div class="tool"><img src="Landbot.png" style="background: #fff; padding: 4px; border-radius: 6px;"><span>Landot</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Projets -->
+  <section class="section" id="projects">
+    <h2>Projets</h2>
+
+  <div class="project">
+    <img src="odway.png" alt="Projet 1">
+    <div class="project-text">
+      <h3>ODWAY</h3>
+      <p>ODWAY est une plateforme innovante d’orientation scolaire et professionnelle, que j’ai imaginée, conçue et développée de A à Z, jusqu’au déploiement et à la visibilité sur les réseaux et Google. Elle propose des tests interactifs (MBTI, DISC), des fiches métiers détaillées et des outils pour aider chaque utilisateur à trouver sa voie, le tout avec une expérience utilisateur moderne et intuitive.</p>
+      <a href="https://odway.fr" target="_blank" class="btn">Voir le site</a>
+    </div>
+  </div>
+
+  <div class="project reverse">
+    <img src="femmesfi.png" alt="Projet 2">
+    <div class="project-text">
+      <h3>FemmesFinance</h3>
+      <p>FemmesFinance est une plateforme d’éducation financière inclusive que j’ai imaginée, conçue et développée de A à Z. Elle vise à rendre la finance accessible à tous, grâce à des contenus pédagogiques, des outils interactifs et un chatbot intelligent. J’ai travaillé sur l’architecture, le design, le développement, le référencement et la mise en ligne pour maximiser son impact et sa visibilité.</p>
+      <a href="https://femmesfinance.fr" target="_blank" class="btn">Voir le site</a>
+    </div>
+  </div>
+
+  <div class="project">
+    <img src="portfolio.png" alt="Projet 3">
+    <div class="project-text">
+      <h3>Mon Portfolio</h3>
+      <p>Ce portfolio est conçu avec HTML, CSS, JavaScript et un design responsive. J’ai mis l’accent sur l’accessibilité, la clarté et l’expérience utilisateur. Je souhaite l’enrichir avec des animations, intégrer React pour plus d’interactivité, et améliorer le référencement ainsi que la performance.</p>
+      <a href="https://monportfolio.com" target="_blank" class="btn">Voir le site</a>
+    </div>
+  </div>
+
+  <div class="project reverse">
+    <img src="stelliant.png" alt="Projet 4">
+    <div class="project-text">
+      <h3>Stelliant</h3>
+      <p>J’ai assuré le paramétrage avancé du logiciel de gestion de sinistres VEOS : création et automatisation de champs, gestion des profils utilisateurs, insertion et structuration des données, résolution d’anomalies et optimisation des processus métier.</p>
+      <a href="https://monprojet4.com" target="_blank" class="btn">Voir le site</a>
+    </div>
+  </div>
+</section>
+
+
+
+    
+
+  </section>
+
+  <!-- Expériences -->
+    <section class="section" id="experiences">
+  <h2>Expériences professionnelles</h2>
+  <div class="experience-grid">
+    
+    <div class="experience-card">
+      <h3>Développeuse Frontend</h3>
+      <p><strong>🏢</strong> Startup EdTech ODWAY</p>
+      <p><strong>📅</strong> 2024 - 2025</p>
+      <p><strong>🛠️</strong> UX/UI, HTML, CSS, GitHub, React, Tailwind, API REST</p>
+      <p><strong>💡</strong> Conception d'une interface web dynamique et responsive.</p>
+    </div>
+
+    <div class="experience-card">
+      <h3>Projet FemmesFinance</h3>
+      <p><strong>🏢</strong> Projet personnel - Fintech </p>
+      <p><strong>📅</strong> 2025</p>
+      <p><strong>🛠️</strong> HTML, CSS, GitHub, React, Tailwind, API REST, Firebase, UX/UI</p>
+      <p><strong>💡</strong> Plateforme éducative + chatbot intelligent en dev.</p>
+    </div>
+
+    <div class="experience-card">
+      <h3>Business analyst - Coordinatrice de projet</h3>
+      <p><strong>🏢</strong> Groupe Stelliant</p>
+      <p><strong>📅</strong> 2021 - 2024</p>
+      <p><strong>🛠️</strong> VEOS, JIRA</p>
+      <p><strong>💡</strong> Paramétrage des données assurés, plage de sinistre, coordination des projets, formation de l'équipe.</p>
+    </div>
+
+  </div>
+</section>
+
+  <!-- Education -->
+  <section class="section" id="Education">
+    <h2>Formations</h2>
+    <div class="about-container">
+      <div class="about-text">
+        <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-top: 2rem;">
+          <div style="background: rgba(255,255,255,0.13); border-radius: 16px; padding: 2rem 1.5rem; min-width: 250px; max-width: 320px; flex: 1 1 250px; box-shadow: 0 4px 18px rgba(255,144,194,0.10);">
+            <h3 style="color:#c976f5; margin-top:0;">Développeur Web</h3>
+            <p><strong>OpenClassrooms</strong> <br><span style="color:#d499f4;">2024</span></p>
+            <ul style="text-align:left; margin:0 0 0 1.2em; padding:0; font-size:0.98em;">
+              <li>HTML, CSS, JavaScript</li>
+              <li>Bases du développement web</li>
+            </ul>
+          </div>
+          <div style="background: rgba(255,255,255,0.13); border-radius: 16px; padding: 2rem 1.5rem; min-width: 250px; max-width: 320px; flex: 1 1 250px; box-shadow: 0 4px 18px rgba(255,144,194,0.10);">
+            <h3 style="color:#c976f5; margin-top:0;">UX/UI Design</h3>
+            <p><strong>Coursera</strong> <br><span style="color:#d499f4;">2023</span></p>
+            <ul style="text-align:left; margin:0 0 0 1.2em; padding:0; font-size:0.98em;">
+              <li>Conception d'interfaces</li>
+              <li>Principes de design, prototypage</li>
+            </ul>
+          </div>
+          <div style="background: rgba(255,255,255,0.13); border-radius: 16px; padding: 2rem 1.5rem; min-width: 250px; max-width: 320px; flex: 1 1 250px; box-shadow: 0 4px 18px rgba(255,144,194,0.10);">
+            <h3 style="color:#c976f5; margin-top:0;">Certification React</h3>
+            <p><strong>Codecademy</strong> <br><span style="color:#d499f4;">2024</span></p>
+            <ul style="text-align:left; margin:0 0 0 1.2em; padding:0; font-size:0.98em;">
+              <li>React Next.JS</li>
+              <li>Applications web dynamiques</li>
+            </ul>
+          </div>
+
+          <div style="background: rgba(255,255,255,0.13); border-radius: 16px; padding: 2rem 1.5rem; min-width: 250px; max-width: 320px; flex: 1 1 250px; box-shadow: 0 4px 18px rgba(255,144,194,0.10);">
+            <h3 style="color:#c976f5; margin-top:0;">Formation Développeuse IA </h3>
+            <p><strong>Coursera</strong> <br><span style="color:#d499f4;">En cours</span></p>
+            <ul style="text-align:left; margin:0 0 0 1.2em; padding:0; font-size:0.98em;">
+              <li>Intelligent Artificiel</li>
+              <li>Agent IA</li>
+            </ul>
+        </div>
+        
+    </div>
+  </section>
+
+  <!-- Hobbies et Langues -->
+   <section id="hobbies">
+  <h2 class="sub-title" style="font-size: x-large;">HOBBIES</h2>
+  <div class="cards-grid">
+    <div class="card">
+      <i class="fas fa-book-reader"></i>
+      <h3>Lecture</h3>
+    </div>
+    <div class="card">
+      <i class="fas fa-paint-brush"></i>
+      <h3>Dessin & Design</h3>
+    </div>
+    <div class="card">
+      <i class="fas fa-code"></i>
+      <h3>Coding</h3>
+    </div>
+    <div class="card">
+      <i class="fas fa-tennis"></i>
+      <h3>Tennis</h3>
+    </div>
+    <div class="card">
+      <i class="fas fa-peinture"></i>
+      <h3>Peinture</h3>
+    </div>
+  </div>
+</section>
+<section id="languages">
+  <h1 class="sub-title" style="font-size: x-large;">Langues</h1>
+  <div class="cards-grid">
+    <div class="card">
+      <i class="fas fa-language"></i>
+      <h3>Français</h3>
+      <p>Langue maternelle</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-comments"></i>
+      <h3>Anglais</h3>
+      <p>Niveau avancé</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-comment-dots"></i>
+      <h3>Arabe</h3>
+      <p>Notions</p>
+    </div>
+  </div>
+</section>
+
+    
+
+<!-- Contact -->
+
+<section id="contact">
+  <p class="sub-title" style="font-size: x-large;">Me contacter</p>
+  <form class="contact-form" action="https://formspree.io/f/mdkdnnbw" method="POST">
+    <input type="text" name="name" placeholder="Ton prénom" required>
+    <input type="email" name="email" placeholder="Ton email" required>
+    <textarea name="message" rows="5" placeholder="Ton message ici..." required></textarea>
+    <button type="submit">Envoyer le message ✨</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+
+<footer style="text-align: center; padding: 20px; background-color: rgba(30, 30, 47, 0.8); color: #fff;">
+  <p>© 2025 Zara. Tous droits réservés.</p>
+  <p>Portfolio réalisé par Zara</p>
+  <p>Suivez-moi sur <a href="Linkdin" style="color: #c976f5; text-decoration: none;">JGEZGZU.FR</a></p>
+</footer>
+
+
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+  <script>
+    VANTA.NET({
+      el: "#vanta-bg",
+      mouseControls: true,
+      touchControls: true,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.0,
+      scaleMobile: 1.0,
+      color: 0xffc4e0,
+      backgroundColor: 0x1e1e2f,
+      points: 8.0,
+      maxDistance: 25.0,
+      spacing: 20.0
+    })
+  </script>
+
+  <!-- Typing animation -->
+  <script>
+    const words = ["l'apprentissage", "la finance", "le développement web", "l'innovation"];
+    let i = 0, j = 0, currentWord = "", isDeleting = false;
+    const speed = 150;
+    const typingElement = document.getElementById("typing");
+
+    function typeEffect() {
+      currentWord = words[i];
+      typingElement.innerHTML = currentWord.substring(0, j) + (j % 2 === 0 ? "|" : "");
+
+      if (!isDeleting && j < currentWord.length) {
+        j++;
+        setTimeout(typeEffect, speed);
+      } else if (isDeleting && j > 0) {
+        j--;
+        setTimeout(typeEffect, speed / 2);
+      } else {
+        isDeleting = !isDeleting;
+        if (!isDeleting) i = (i + 1) % words.length;
+        setTimeout(typeEffect, 1000);
+      }
+    }
+
+    typeEffect();
+  </script>
+
+</body>
+
+</html>
